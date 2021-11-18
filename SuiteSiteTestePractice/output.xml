@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.7 on win32)" generated="20211118 19:42:03.193" rpa="false" schemaversion="2">
+<suite id="s1" name="TestSitePractice" source="c:\Projetos\SuiteSiteTestePractice\tests\TestSitePractice.robot">
+<test id="s1-t1" name="Caso de Teste 01: Pesquisar produto existente">
+<kw name="Abrir navegador" library="Resource" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211118 19:42:03.569" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20211118 19:42:03.567" endtime="20211118 19:42:06.910"/>
+</kw>
+<status status="PASS" starttime="20211118 19:42:03.567" endtime="20211118 19:42:06.910"/>
+</kw>
+<kw name="Acessar a página home do site" library="Resource">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211118 19:42:06.912" level="INFO">Opening url 'http://automationpractice.com/'</msg>
+<status status="PASS" starttime="20211118 19:42:06.911" endtime="20211118 19:42:15.544"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>My Store</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20211118 19:42:15.552" level="INFO">Page title is 'My Store'.</msg>
+<status status="PASS" starttime="20211118 19:42:15.544" endtime="20211118 19:42:15.552"/>
+</kw>
+<status status="PASS" starttime="20211118 19:42:06.911" endtime="20211118 19:42:15.552"/>
+</kw>
+<kw name="Digitar o nome do produto &quot;${PRODUTO}&quot; no campo de pesquisa" library="Resource" sourcename="Digitar o nome do produto &quot;${PRODUTO}&quot; no campo de pesquisa">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=search_query</arg>
+<arg>${PRODUTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211118 19:42:15.554" level="INFO">Typing text 'Blouse' into text field 'name=search_query'.</msg>
+<status status="PASS" starttime="20211118 19:42:15.553" endtime="20211118 19:42:15.731"/>
+</kw>
+<status status="PASS" starttime="20211118 19:42:15.552" endtime="20211118 19:42:15.732"/>
+</kw>
+<kw name="Clicar no botão 'Pesquisar'" library="Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>name=submit_search</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211118 19:42:15.734" level="INFO">Clicking element 'name=submit_search'.</msg>
+<status status="PASS" starttime="20211118 19:42:15.733" endtime="20211118 19:42:18.244"/>
+</kw>
+<status status="PASS" starttime="20211118 19:42:15.733" endtime="20211118 19:42:18.244"/>
+</kw>
+<kw name="Conferir se o produto &quot;${PRODUTO}&quot; foi listado no site" library="Resource" sourcename="Conferir se o produto &quot;${PRODUTO}&quot; foi listado no site">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#center_column &gt; h1</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211118 19:42:18.246" endtime="20211118 19:42:18.506"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Search - My Store</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20211118 19:42:18.511" level="INFO">Page title is 'Search - My Store'.</msg>
+<status status="PASS" starttime="20211118 19:42:18.506" endtime="20211118 19:42:18.511"/>
+</kw>
+<kw name="Page Should Contain Image" library="SeleniumLibrary">
+<arg>xpath=//*[@id="center_column"]//"[@src='http://automationpractice.com/img/p/7/7-home_default.jpg']</arg>
+<doc>Verifies image identified by ``locator`` is found from current page.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211118 19:42:18.751" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20211118 19:42:18.556" endtime="20211118 19:42:18.751"/>
+</kw>
+<msg timestamp="20211118 19:42:18.773" level="FAIL">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //*[@id="center_column"]//"[@src='http://automationpractice.com/img/p/7/7-home_default.jpg'] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//*[@id="center_column"]//"[@src='http://automationpractice.com/img/p/7/7-home_default.jpg']' is not a valid XPath expression.
+  (Session info: chrome=96.0.4664.45)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00A56903+2517251]
+	Ordinal0 [0x009EF8E1+2095329]
+	Ordinal0 [0x008F2848+1058888]
+	Ordinal0 [0x008F4F44+1068868]
+	Ordinal0 [0x008F4E0E+1068558]
+	Ordinal0 [0x008F5070+1069168]
+	Ordinal0 [0x0091D1C2+1233346]
+	Ordinal0 [0x0091D63B+1234491]
+	Ordinal0 [0x0094784C+1407052]
+	Ordinal0 [0x0093650A+1336586]
+	Ordinal0 [0x00945BBF+1399743]
+	Ordinal0 [0x0093639B+1336219]
+	Ordinal0 [0x009127A7+1189799]
+	Ordinal0 [0x00913609+1193481]
+	GetHandleVerifier [0x00BE5904+1577972]
+	GetHandleVerifier [0x00C90B97+2279047]
+	GetHandleVerifier [0x00AE6D09+534521]
+	GetHandleVerifier [0x00AE5DB9+530601]
+	Ordinal0 [0x009F4FF9+2117625]
+	Ordinal0 [0x009F98A8+2136232]
+	Ordinal0 [0x009F99E2+2136546]
+	Ordinal0 [0x00A03541+2176321]
+	BaseThreadInitThunk [0x7719FA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77CF7A9E+286]
+	RtlGetAppContainerNamedObjectPath [0x77CF7A6E+238]
+</msg>
+<status status="FAIL" starttime="20211118 19:42:18.511" endtime="20211118 19:42:18.773"/>
+</kw>
+<status status="FAIL" starttime="20211118 19:42:18.245" endtime="20211118 19:42:18.774"/>
+</kw>
+<kw name="Fechar navegador" library="Resource" type="TEARDOWN">
+<msg timestamp="20211118 19:42:18.776" level="FAIL">User keyword 'Fechar navegador' contains no keywords.</msg>
+<status status="FAIL" starttime="20211118 19:42:18.775" endtime="20211118 19:42:18.776">User keyword 'Fechar navegador' contains no keywords.</status>
+</kw>
+<status status="FAIL" starttime="20211118 19:42:03.566" endtime="20211118 19:42:18.776">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //*[@id="center_column"]//"[@src='http://automationpractice.com/img/p/7/7-home_default.jpg'] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//*[@id="center_column"]//"[@src='http://automationpractice.com/img/p/7/7-home_default.jpg']' is not a valid XPath expression.
+  (Session info: chrome=96.0.4664.45)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00A56903+2517251]
+	Ordinal0 [0x009EF8E1+2095329]
+	Ordinal0 [0x008F2848+1058888]
+	Ordinal0 [0x008F4F44+1068868]
+	Ordinal0 [0x008F4E0E+1068558]
+	Ordinal0 [0x008F5070+1069168]
+	Ordinal0 [0x0091D1C2+1233346]
+	Ordinal0 [0x0091D63B+1234491]
+	Ordinal0 [0x0094784C+1407052]
+	Ordinal0 [0x0093650A+1336586]
+	Ordinal0 [0x00945BBF+1399743]
+	Ordinal0 [0x0093639B+1336219]
+	Ordinal0 [0x009127A7+1189799]
+	Ordinal0 [0x00913609+1193481]
+	GetHandleVerifier [0x00BE5904+1577972]
+	GetHandleVerifier [0x00C90B97+2279047]
+	GetHandleVerifier [0x00AE6D09+534521]
+	GetHandleVerifier [0x00AE5DB9+530601]
+	Ordinal0 [0x009F4FF9+2117625]
+	Ordinal0 [0x009F98A8+2136232]
+	Ordinal0 [0x009F99E2+2136546]
+	Ordinal0 [0x00A03541+2176321]
+	BaseThreadInitThunk [0x7719FA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77CF7A9E+286]
+	RtlGetAppContainerNamedObjectPath [0x77CF7A6E+238]
+
+
+Also teardown failed:
+User keyword 'Fechar navegador' contains no keywords.</status>
+</test>
+<status status="FAIL" starttime="20211118 19:42:03.195" endtime="20211118 19:42:18.786"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="TestSitePractice">TestSitePractice</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
